@@ -15,3 +15,9 @@
 3. chạy file httpd.conf bằng ide 
 4. tìm đến dòng "listen 8888" và sửa lại thành "listen 7777" save file 
 5. chạy lại MAMP servers, trên trình duyệt type "localhost:7777" sẽ vào dc setting của wordpress 
+
+
+
+#tình trạng hiện tại 
+chưa xoá được đường dẫn /wordpress 
+mong có chỉ dẫn cụ thể, làm cách nào cho chuyên nghiệp hơn 

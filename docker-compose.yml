@@ -9,10 +9,12 @@ services:
     expose:
       - "7777"
     restart: always
-networks: 
+    networks: 
+      - wpsite
+networks:
   default:
     external:
-      name: nginx-proxy  
+      name: nginx-proxy      
       
   nginx-proxy:
     image: jwilder/nginx-proxy

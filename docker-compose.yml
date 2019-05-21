@@ -1,18 +1,35 @@
-version: '3'
-#nginx-proxy
+version: "3.0"
+
 services:
+  duongduong:
+    image: wordpress:latest
+    environment:
+      VIRTUAL_HOST: duongduonglaso.mot
+      VIRTUAL_PORT: 7777
+    expose:
+      - "7777"
+    restart: always
+networks: 
+  default:
+    external:
+      name: nginx-proxy  
+      
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy
     ports:
       - "80:80"
+      - "443:443"
     volumes:
+      - ./certs:/etc/nginx/certs
       - /var/run/docker.sock:/tmp/docker.sock:ro
+    restart: unless-stopped
 
-  whoami:
-    image: jwilder/whoami
-    environment:
-      - VIRTUAL_HOST=whoami.local
+networks:
+  default:
+    external:
+      name: nginx-proxy 
+
   #variables     
   wordpress:
     container_name: 'wp'

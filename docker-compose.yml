@@ -2,20 +2,39 @@ version: "3.0"
 #duongduonglasomot
 services:
   duongduong:
-    image: wordpress:latest
+    build:  .
+    links:
+      - db:db
+    ports:
+      - 1080:1080
+    depends_on:
+      [db]
+    volumes:
+      - ../:/var/www
+      - ../public/:/var/www/html
     environment:
-      VIRTUAL_HOST: duongduonglaso.mot
       VIRTUAL_PORT: 80
-    expose:
-      - "7777"
+      VIRTUAL_HOST: duongduonglaso.mot
+
+  db:
+    image: mariadb
     restart: always
-    networks: 
-      - wpsite
-networks:
+    ports:
+      - 3307:3306
+    volumes:
+      - ../duongduonglaso-dock-mysql/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+volumes:
+  db_data:
+networks: 
   default:
     external:
-      name: nginx-proxy      
-      
+      name: nginx-proxy 
+          
   nginx-proxy:
     image: jwilder/nginx-proxy
     container_name: nginx-proxy

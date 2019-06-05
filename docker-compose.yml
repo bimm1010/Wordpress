@@ -36,7 +36,7 @@ services:
     ports:
       -80:80
 
-    #database
+#database
   db:
     image: mysql:8.0
     volumes:
@@ -59,7 +59,6 @@ services:
     environment:
       PMA_HOST: db        
       MYSQL_ROOT_PASSWORD: password
-     
 
 #wordpress
   wordpress:

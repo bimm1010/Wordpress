@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEst thử xem ntn</title>
+</head>
+<body>
+        <p>
+                <label>FootToMeter</label> 
+                </br>
+                <input id="inputFoot" type="number" placeholder="Nhập Foot"
+                       oninput="changeToMeter(this.value)"
+                       onchange="changeToMeter(this.value)">
+        </p>
+                <p>Meter: <span id="outputMeter"></span></p>
+
+                
+            ///////////////////Foot Meter change to//////////////////////////
+            
+            <p>
+                <label>MeterToFoot</label>
+                </br>
+                <input id="inputMeter" type="number" placeholder="Nhâp Meter"
+                       oninput="changeToFoot(this.value)"
+                       onchange="changeToFoot(this.value)">
+            </p>
+            <p>Foot: <span id="outputFoot"></span></p>
+            
+            <!--///////////////////////////////////////////////////////-->
+            
+            <script>
+                function changeToMeter(valNum) {
+                    valNum = parseFloat(valNum);
+                    document.getElementById("outputMeter").innerHTML = valNum * 0.305;
+                }
+                function changeToFoot(valnum1) {
+                    valnum1 = parseFloat(valnum1);
+                    document.getElementById("outputFoot").innerHTML = valnum1 * 3.279;
+                }
+            </script>
+</body>
+</html>
